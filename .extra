@@ -1,0 +1,41 @@
+export PATH=/usr/local/mysql/bin:$PATH
+export PATH=/usr/local/php5/bin:$PATH
+
+# General
+alias ls='ls -la'
+alias hosts='sudo vim /etc/hosts'
+alias vhosts='sudo vim /etc/apache2/extra/httpd-vhosts.conf'
+
+# Elastic Search
+alias elasticsearch='cd ~/elasticsearch-1.7.5 && bin/elasticsearch'
+
+alias elasticsearch_delete_index='curl -XDELETE "http://localhost:9200/*"'
+# Git
+alias g='git'
+alias ..='cd ..'
+alias gs='git status'
+alias gp='git push'
+alias gc='git commit'
+alias gd='git diff'
+alias gb='git branch'
+alias gls='git log --pretty=format:"%C(Yellow)%h%Creset - %an - %ar - %C(green)%s %Creset"'
+
+source /usr/local/etc/bash_completion.d/git-completion.bash
+
+GIT_AUTHOR_NAME="Koen Vinken"
+GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"
+git config --global user.name "$GIT_AUTHOR_NAME"
+GIT_AUTHOR_EMAIL="koen.vinken@wijs.be"
+GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL"
+git config --global user.email "$GIT_AUTHOR_EMAIL"
+
+# Symfony console
+_symfony_console () {
+  echo "php $(find . -maxdepth 2 -mindepth 1 -name 'console' -type f | head -n 1)"
+}
+
+alias sf='`_symfony_console`'
+
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
